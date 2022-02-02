@@ -8,7 +8,7 @@ export default function Home({ data }) {
       {data.map((item) => {
         return (
           <div key={item.id}>
-            <Link href={`/${item.id}`}>
+            <Link href={`products/${item.id}`}>
               <a>{item.id}</a>
             </Link>
           </div>
