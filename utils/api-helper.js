@@ -1,11 +1,25 @@
 import { DUMMY_EVENTS } from "../data/dummy";
 
-export function getFeaturedEvents() {
-  return DUMMY_EVENTS.filter((event) => event.isFeatured);
+const BASE_URL =
+  "https://nextjs-test-api-default-rtdb.firebaseio.com/events.json";
+
+export async function getAllEvents() {
+  const data = await fetch(BASE_URL).then((res) => res.json());
+  const events = [];
+
+  for (const key in data) {
+    events.push({
+      id: key,
+      ...data[key],
+    });
+  }
+
+  return events;
 }
 
-export function getAllEvents() {
-  return DUMMY_EVENTS;
+export async function getFeaturedEvents() {
+  const allEvents = await getAllEvents();
+  return allEvents.filter((event) => event.isFeatured);
 }
 
 export function getFilteredEvents(dateFilter) {
@@ -21,6 +35,8 @@ export function getFilteredEvents(dateFilter) {
   return filteredEvents;
 }
 
-export function getEventById(id) {
-  return DUMMY_EVENTS.find((event) => event.id === id);
+export async function getEventById(id) {
+  const allEvents = await getAllEvents();
+  console.log(id);
+  return allEvents.find((event) => event.id === id);
 }
