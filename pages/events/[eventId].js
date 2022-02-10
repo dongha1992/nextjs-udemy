@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useRouter } from "next/dist/client/router";
-import { getEventById } from "../../dummy-data";
+import { getEventById } from "../../utils/api-helper";
 
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";

@@ -1,3 +1,5 @@
+import { DUMMY_EVENTS } from "../data/dummy";
+
 export function getFeaturedEvents() {
   return DUMMY_EVENTS.filter((event) => event.isFeatured);
 }

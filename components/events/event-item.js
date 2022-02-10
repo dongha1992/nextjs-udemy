@@ -1,8 +1,5 @@
+import SVGIcon from "../icons/SVGIcon";
 import Button from "../ui/button";
-import DateIcon from "../icons/date-icon";
-import AddressIcon from "../icons/address-icon";
-import ArrowRightIcon from "../icons/arrow-right-icon";
-
 import styles from "./event-item.module.css";
 
 function EventItem(props) {
@@ -25,11 +22,11 @@ function EventItem(props) {
         <div className={styles.summary}>
           <h2>{title}</h2>
           <div className={styles.date}>
-            <DateIcon />
+            <SVGIcon name="dateIcon" />
             <time>{humanRedeableDate}</time>
           </div>
           <div className={styles.address}>
-            <AddressIcon />
+            <SVGIcon name="dateIcon" />
             <address>{formattedAddress}</address>
           </div>
         </div>
@@ -37,7 +34,7 @@ function EventItem(props) {
           <Button link={exploreLink}>
             <span>Explore Event</span>
             <span className={styles.icon}>
-              <ArrowRightIcon />
+              <SVGIcon name="dateIcon" />
             </span>
           </Button>
         </div>
