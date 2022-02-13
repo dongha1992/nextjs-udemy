@@ -1,9 +1,10 @@
 import SVGIcon from "../icons/SVGIcon";
 import Button from "../ui/button";
 import styles from "./event-item.module.css";
+import Image from "next/image";
 
 function EventItem(props) {
-  const { title, image, date, location, id } = props;
+  const { title, image, date, location, id, num } = props;
 
   const humanRedeableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -17,7 +18,13 @@ function EventItem(props) {
 
   return (
     <li className={styles.item}>
-      <img src={`/${image}`} alt={title} />
+      <Image
+        src={image + `0${num + 1}.png`}
+        alt={title}
+        width={200}
+        height={160}
+      />
+      {/* <img src={image + `0${num + 1}.png`} alt={title} /> */}
       <div className={styles.content}>
         <div className={styles.summary}>
           <h2>{title}</h2>
