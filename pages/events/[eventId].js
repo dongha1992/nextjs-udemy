@@ -1,6 +1,10 @@
 import { Fragment } from "react";
 import { useRouter } from "next/dist/client/router";
-import { getEventById, getAllEvents } from "../../utils/api-helper";
+import {
+  getEventById,
+  getAllEvents,
+  getFeaturedEvents,
+} from "../../utils/api-helper";
 
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
@@ -37,16 +41,19 @@ export async function getStaticProps(context) {
   const event = await getEventById(eventId);
   return {
     props: { event },
+    revalidate: 30,
   };
 }
 
 export async function getStaticPaths() {
-  const events = await getAllEvents();
+  // 프리 렌더할 특정 이벤트만 가져옴
+  const events = await getFeaturedEvents();
   const paths = events.map((event) => ({ params: { eventId: event.id } }));
 
   return {
     paths,
-    fallback: false,
+    // "blocking" 설정할 경우, 완료된 데이터를 넘겨서 로딩창 보여줄 필요 없음
+    fallback: true,
   };
 }
 
