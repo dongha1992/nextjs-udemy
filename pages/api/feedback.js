@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 const apiClient = async (req, res) => {
   // mongoDb
 
-  const client = await MongoClient.connect("key").then((client) => {
+  const client = await MongoClient.connect("key").then(async (client) => {
     const db = client.db();
     await db.collection("emails").insertOne({ email: userEmail });
     client.close();
