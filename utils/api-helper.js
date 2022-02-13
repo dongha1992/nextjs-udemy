@@ -1,6 +1,6 @@
 import { DUMMY_EVENTS } from "../data/dummy";
 
-const BASE_URL =
+export const BASE_URL =
   "https://nextjs-test-api-default-rtdb.firebaseio.com/events.json";
 
 export async function getAllEvents() {
